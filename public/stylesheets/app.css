@@ -1,0 +1,85 @@
+html {
+    font-size: 1.2em;
+}
+
+#banner {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://images.unsplash.com/photo-1477064090637-a375691d78ac?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0f9719521d286be4b41643b63401d09b&auto=format&fit=crop&w=1489&q=80");
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding : 10%;
+    padding-bottom: 20%;
+}
+
+#tagline {
+    color: white;
+}
+
+#graphImage {
+    height: 20%;
+}
+
+.animal {
+    display: block;
+    margin: 5% auto 0 auto;
+    padding: 2%;
+    border: 2px solid grey;
+    border-radius: 25px;
+    text-align: center;
+}
+
+#animalImage {
+    max-height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.info {
+    text-align: center;
+    font-size: 20px;
+    padding: 2%;
+}
+
+.infoLink {
+    font-size: 2em;
+}
+
+
+i.icon {
+    padding-top: 15%;
+    font-size: 2em;
+}
+
+#animalShow p {
+    font-size: 3vh;
+}
+
+.icon-button {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    border: 0;
+    background: transparent;
+}
+
+.log {
+    margin: 15%;
+    padding: 2%;
+    border: 2px solid grey;
+}
+
+#delete {
+    display: inline;
+}
+
+#logShowTable {
+    font-size: 1.5em;
+}
+
+#logShowButtons {
+    text-align: center;
+}

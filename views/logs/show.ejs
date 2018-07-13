@@ -1,0 +1,36 @@
+<% include ../partials/header %>
+
+<div class="log container">
+    <h1 class="ui centered huge header">Log Entry</h1>
+    
+    <table id="logShowTable" class="ui celled large table">
+        <thead>
+            <tr>
+                <th>Amount(g)</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= log.amount %></td>
+                <td><%= log.dateMilked.toDateString() %></td>
+                <td><%= log.dateMilked.toLocaleTimeString() %></td>
+                <td><%= log.notes %></td>
+                
+            </tr>
+            
+        </tbody>
+    </table>
+    <div id="logShowButtons">
+    <a class="ui green basic button" href="/animals/<%= log.animalID %>/logs/<%= log._id %>/edit">Edit</a>
+    <form id="delete" action="/animals/<%= log.animalID %>/logs/<%= log._id %>?_method=DELETE" method="POST">
+        <button class="ui red basic button">Delete</button>
+    </form>
+    </div>
+</div>
+
+ 
+
+<% include ../partials/footer %>

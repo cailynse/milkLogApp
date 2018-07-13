@@ -1,0 +1,52 @@
+
+
+<% include ../partials/header %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">Edit <%= animal.name %></div>
+    <form class="ui form" action="/animals/<%= animal._id %>?_method=PUT" method="POST">
+        <div class="field">
+            <label>Name</label>
+            <input type="text" name="animal[name]" value="<%= animal.name %>">
+        </div>
+        <div class="field">
+            <label>Image</label>
+            <input type="text" name="animal[image]" value="<%= animal.image %>">
+        </div>
+        <div class="field">
+            <label>Species</label>
+            <select id="animalVariety" class="ui fluid selection dropdown" name="animal[variety]">
+                <option value="">Select Animal</option>
+                <option  value="Cow">Cow</option>
+                <option  value="Goat">Goat</option>
+                <option  value="Sheep">Sheep</option>
+                <option  value="Buffalo">Buffalo</option>
+                <option  value="Camel">Camel</option>
+                <option  value="Horse">Horse</option>
+                <option  value="Donkey">Donkey</option>
+                <option  value="Yak">Yak</option>
+                <option  value="Reindeer">Reindeer</option>
+                <option  value="Moose">Moose</option>
+          </select>
+        </div>
+        <div class="field">
+            <label>Date of Birth</label>
+            <input type="date" name="animal[DOB]" value="<%= animal.DOB.toISOString().substring(0, 10) %>">
+        </div>
+        <input class="ui violet basic button big" type="submit">
+    </form>
+</div>
+
+ <script>
+     var desiredValue = "<%= animal.variety %>";
+     var el = document.getElementById("animalVariety");
+     for (var i = 0; i < el.options.length; i++) {
+         if (el.options[i].text == desiredValue) {
+             el.selectedIndex = i;
+             break;
+         }
+     }
+
+ </script>
+
+<% include ../partials/footer %>
