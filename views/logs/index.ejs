@@ -1,54 +1,54 @@
 <% include ../partials/header %>
 
-<div class="ui center aligned icon header">
-    <h1><%= animal.name %>'s Log Entries</h1>
-    <a id="addLog" href="/animals/<%= animal._id %>/logs/new"><i class="ui plus circle icon"></i>Add New Log</a>
+    <div class="ui center aligned icon header">
+        <h1><%= animal.name %>'s Log Entries</h1>
+        <a id="addLog" href="/animals/<%= animal._id %>/logs/new"><i class="ui plus circle icon"></i>Add New Log</a>
     </div>
 
 
 
 
-                
-<% if (animal.logs.length === 0) { %>
 
-    <h1 class="ui centered header">NO LOGS</h1>
+    <% if (animal.logs.length === 0) { %>
 
-    <% } else { %>
-        <div class=" ui container">
-        <table class="ui celled table">
-        <thead>
-            <tr>
-                <th>Amount</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Notes</th>
-                <th>Details</th>
-            </tr>
-            <tbody>
-            <% animal.logs.forEach(function(log){ %>
-            <tr>
-            <td>
-                 <%= log.amount %> grams
-             </td>
-             <td>
-                 <%= log.dateMilked.toDateString() %>
-             </td>
-             <td>
-                 <%= log.dateMilked.toLocaleTimeString() %>
-             </td>
-             <td>
-                 <%= log.notes %>
-            </td>
-            <td>
-                <a href="/animals/<%= animal._id %>/logs/<%= log._id %>">See Details</a>
-            </td>
-            </tr>
-    
-    <% }); %>
-<% } %>
-            </tbody>
-        </thead>
-    </table>
-</div>
+        <h1 class="ui centered header">NO LOGS</h1>
 
-<% include ../partials/footer %>
+        <% } else { %>
+            <div class=" ui container">
+                <table class="ui celled table">
+                    <thead>
+                        <tr>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Notes</th>
+                            <th>Details</th>
+                        </tr>
+                        <tbody>
+                            <% animal.logs.forEach(function(log){ %>
+                                <tr>
+                                    <td>
+                                        <%= log.amount %> grams
+                                    </td>
+                                    <td>
+                                        <%= log.dateMilked.toDateString() %>
+                                    </td>
+                                    <td>
+                                        <%= log.dateMilked.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour12: true }) %>
+                                    </td>
+                                    <td>
+                                        <%= log.notes %>
+                                    </td>
+                                    <td>
+                                        <a href="/animals/<%= animal._id %>/logs/<%= log._id %>">See Details</a>
+                                    </td>
+                                </tr>
+
+                                <% }); %>
+                                    <% } %>
+                        </tbody>
+                    </thead>
+                </table>
+            </div>
+
+            <% include ../partials/footer %>
