@@ -4,7 +4,7 @@ var bodyParser = require("body-parser"),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
     User = require("./models/user"),
-    Animal = require("./models/user"),
+    Animal = require("./models/animal"),
     express = require("express"),
     app = express();
 
@@ -18,6 +18,19 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(methodOverride("_method"));
+
+//PASSPORT CONFIG
+app.use(require("express-session")({
+    secret: "Goat milk is best!",
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
 //HOME PAGE
@@ -269,6 +282,27 @@ app.delete("/animals/:animalId/logs/:logId", function (req, res) {
         });
 });
 
+//AUTH ROUTES
+
+//show register form
+app.get("/register", function (req, res) {
+    res.render("register");
+});
+//handle sign up logic
+app.post("/register", function (req, res) {
+    var newUser = new User({
+        username: req.body.username
+    });
+    User.register(newUser, req.body.password, function (err, user) {
+        if (err) {
+            console.log(err);
+            return res.render("register");
+        }
+        passport.authenticate("local")(req, res, function () {
+            res.redirect("/animals");
+        })
+    })
+});
 
 app.listen(process.env.PORT, process.env.IP, function () {
     console.log("MILK LOG SERVER IS RUNNING");
