@@ -1,6 +1,10 @@
 var bodyParser = require("body-parser"),
     methodOverride = require("method-override"),
     mongoose = require("mongoose"),
+    passport = require("passport"),
+    LocalStrategy = require("passport-local"),
+    User = require("./models/user"),
+    Animal = require("./models/user"),
     express = require("express"),
     app = express();
 
@@ -14,30 +18,6 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(methodOverride("_method"));
-
-
-//MONGOOSE MODEL CONFIG
-
-//ANIMAL
-var animalSchema = new mongoose.Schema({
-    image: String,
-    name: String,
-    variety: String,
-    DOB: Date,
-    logs: [{
-        amount: Number,
-        notes: String,
-        dateMilked: Date
-    }],
-    created: {
-        type: Date,
-        default: Date.now
-    }
-});
-
-var Animal = mongoose.model("Animal", animalSchema);
-
-
 
 
 //HOME PAGE
