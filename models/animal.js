@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 
 var animalSchema = new mongoose.Schema({
+    userId: String,
     image: String,
     name: String,
     variety: String,

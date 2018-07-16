@@ -3,6 +3,12 @@
     <div class="ui main text container segment">
         <div class="ui huge header">Create New Animal</div>
         <form class="ui form" action="/animals" method="POST">
+
+            <div class="field">
+                <label>User</label>
+                <input type="text" name="animal[userId]" readonly value="<%= currentUser %>" placeholder="">
+            </div>
+
             <div class="field">
                 <label>Name</label>
                 <input type="text" name="animal[name]" placeholder="name" required>

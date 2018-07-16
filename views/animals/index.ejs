@@ -1,6 +1,6 @@
 <% include ../partials/header %>
 
- 
+
 
     <div class="ui container">
         <h1 class="ui center aligned header">Animals in Database</h1>
@@ -11,16 +11,19 @@
         <div class="ui three column stackable grid conatainer">
 
             <% animals.forEach(function(animal){ %>
-                <div class="animal conatainer">
-                    <div class="column">
-                        <a href="/animals/<%= animal._id %>" class="ui medium image">
+
+                <% if (currentUser.toString() === animal.userId){ %>
+                    <div class="animal conatainer">
+                        <div class="column">
+                            <a href="/animals/<%= animal._id %>" class="ui medium image">
                     <img id="animalImage" class="ui circular image" src="<%= animal.image %>">
                     </a>
-                        <h2><%= animal.name %></h2>
-                        <a class="infoLink" href="/animals/<%= animal._id %>">Details</a>
+                            <h2><%= animal.name %></h2>
+                            <a class="infoLink" href="/animals/<%= animal._id %>">Details</a>
+                        </div>
                     </div>
-                </div>
-                <% }); %>
+                    <% } %>
+                        <% }); %>
         </div>
 
     </div>
