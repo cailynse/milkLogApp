@@ -1,0 +1,66 @@
+<% include ./partials/header %>
+
+    <div id="animalShow" class="ui segment">
+        <img class="ui centered large image" src="#">
+        <h1 class="ui centered huge header">Profile</h1>
+        <div class="ui grid">
+            <div class="row">
+                <div class="info six wide computer sixteen wide mobile column">
+                    <p><strong>Name: </strong></p>
+                    <p>
+                        <%= user.name %>
+                    </p>
+                </div>
+                <div class="info four wide computer sixteen wide mobile column">
+                    <p><strong>Species: </strong></p>
+                    <p>
+                        <%= animal.variety %>
+                    </p>
+                </div>
+                <div class="info six wide computer sixteen wide mobile column">
+                    <p><strong>Entered on: </strong></p>
+                    <p>
+                        <%= animal.created.toDateString() %>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="info six wide computer sixteen wide mobile column">
+                    <a href="/animals/<%= animal._id %>/edit">
+                        <div class="ui vertical animated green button" tabindex="0">
+                            <div class="visible content"><i class="ui edit outline icon"></i></div>
+                            <div class="hidden content">
+                                Edit
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="info four wide computer sixteen wide mobile column">
+                    <a href="/animals/<%= animal._id %>/logs">
+                        <div class="ui vertical animated primary button" tabindex="0">
+                            <div class="visible content"><i class="ui chart line icon"></i></div>
+                            <div class="hidden content">
+                                Logs
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="info six wide computer sixteen wide mobile column">
+
+                    <form action="/animals/<%= animal._id %>?_method=DELETE" method="POST">
+                        <button id="delete" class="icon-button">
+                            <div class="ui vertical animated red button" tabindex="0">
+                                <div class="visible content"><i class="ui trash alternate outline icon"></i></div>
+                                <div class="hidden content">
+                                    Delete
+                                </div>
+                            </div>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <% include ./partials/footer %>
